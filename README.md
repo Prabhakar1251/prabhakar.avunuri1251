@@ -1,5 +1,5 @@
 
-# Prabhakar Avunuri
+# PRABHAKAR AVUNURI
 ### Police Constable - 1908 (IT&C)
 **In-House Development Team | TSpark, DGP Office, Hyderabad, Telangana**
 
