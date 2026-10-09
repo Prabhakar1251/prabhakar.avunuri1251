@@ -1,130 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1220" />
+  <meta name="description" content="Professional work profile of A. Prabhakar, Police Constable 1908 (IT&C), software developer." />
+  <title>A. Prabhakar — Developer Profile</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080d18;
+      --surface: rgba(17, 26, 44, .76);
+      --surface-strong: #111a2c;
+      --text: #edf3ff;
+      --muted: #a5b2ca;
+      --line: rgba(174, 194, 230, .15);
+      --blue: #6ea8ff;
+      --cyan: #69e0d0;
+      --purple: #b69cff;
+      --shadow: 0 24px 80px rgba(0,0,0,.24);
+    }
+    body.light {
+      color-scheme: light;
+      --bg: #f3f6fc;
+      --surface: rgba(255,255,255,.82);
+      --surface-strong: #fff;
+      --text: #17243a;
+      --muted: #5c6b83;
+      --line: rgba(45, 68, 105, .15);
+      --blue: #245ec7;
+      --cyan: #087f78;
+      --purple: #7650c8;
+      --shadow: 0 24px 70px rgba(31, 52, 87, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font: 15px/1.7 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      transition: background .25s ease, color .25s ease;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background: radial-gradient(ellipse at 12% 0%, rgba(72, 116, 220, .19), transparent 35%),
+                  radial-gradient(ellipse at 90% 20%, rgba(80, 210, 193, .11), transparent 28%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--bg) 78%, transparent); border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.03em; }
+    .brand-mark {
+      display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px;
+      color: #07101b; background: linear-gradient(135deg, var(--cyan), var(--blue)); font-weight: 900;
+    }
+    .navlinks { display: flex; align-items: center; gap: 24px; color: var(--muted); font-size: 13px; }
+    .navlinks a:hover { color: var(--text); }
+    .nav-actions { display: flex; gap: 9px; align-items: center; }
+    .icon-btn, .button {
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      border-radius: 12px; padding: 10px 13px; cursor: pointer; transition: transform .2s, border-color .2s;
+    }
+    .icon-btn:hover, .button:hover { transform: translateY(-2px); border-color: var(--blue); }
+    .hero { padding: 84px 0 55px; display: grid; grid-template-columns: 1.4fr .8fr; gap: 46px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 9px; color: var(--cyan); font-size: 12px;
+      font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 5px color-mix(in srgb, var(--cyan) 15%, transparent); }
+    h1 { margin: 18px 0 12px; font-size: clamp(42px, 6vw, 72px); line-height: 1.04; letter-spacing: -.065em; }
+    .gradient-text { background: linear-gradient(100deg, var(--text) 15%, var(--blue) 58%, var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .role { font-size: clamp(17px, 2vw, 21px); color: var(--muted); margin: 0 0 18px; }
+    .intro { max-width: 680px; color: var(--muted); font-size: 16px; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button.primary { color: #07101b; font-weight: 800; border: 0; background: linear-gradient(120deg, var(--cyan), var(--blue)); }
+    .hero-card {
+      position: relative; padding: 28px; border: 1px solid var(--line); border-radius: 28px;
+      background: linear-gradient(145deg, var(--surface), color-mix(in srgb, var(--surface) 62%, transparent));
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .hero-card::after { content: ""; position: absolute; width: 170px; height: 170px; border-radius: 50%; right: -70px; top: -75px; background: var(--blue); opacity: .12; filter: blur(2px); }
+    .avatar {
+      width: 76px; height: 76px; display: grid; place-items: center; border-radius: 24px;
+      background: linear-gradient(140deg, #69e0d0, #6ea8ff 60%, #b69cff);
+      color: #07101b; font-size: 27px; font-weight: 900; letter-spacing: -.06em; margin-bottom: 22px;
+    }
+    .card-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; }
+    .card-value { font-weight: 750; margin: 3px 0 16px; overflow-wrap: anywhere; }
+    .status { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); padding: 7px 10px; border-radius: 999px; font-size: 12px; color: var(--muted); }
+    .section { padding: 32px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 22px; }
+    .kicker { color: var(--cyan); font-size: 11px; text-transform: uppercase; letter-spacing: .16em; font-weight: 800; }
+    h2 { margin: 5px 0 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.2; letter-spacing: -.045em; }
+    .section-desc { color: var(--muted); max-width: 580px; margin: 9px 0 0; }
+    .grid { display: grid; gap: 16px; }
+    .details { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel, .project, .skill-panel, .education-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 10px 35px rgba(0,0,0,.035);
+    }
+    .panel { padding: 20px; }
+    .detail-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; background: color-mix(in srgb, var(--blue) 14%, transparent); color: var(--blue); margin-bottom: 13px; font-size: 17px; }
+    .label { color: var(--muted); font-size: 12px; margin-bottom: 4px; }
+    .value { font-weight: 750; line-height: 1.45; }
+    .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .project { padding: 25px; position: relative; overflow: hidden; transition: transform .22s ease, border-color .22s ease; }
+    .project:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--blue) 55%, var(--line)); }
+    .project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+    .project-no { color: var(--cyan); font-size: 12px; font-weight: 850; letter-spacing: .12em; }
+    .project-symbol { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 14px; background: color-mix(in srgb, var(--purple) 13%, transparent); font-size: 19px; }
+    h3 { margin: 0 0 10px; font-size: 19px; line-height: 1.35; letter-spacing: -.025em; }
+    .project p, .skill-panel p, .education-card p { color: var(--muted); font-size: 14px; margin: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+    .tag { border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; color: var(--muted); font-size: 11px; }
+    .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skill-panel { padding: 22px; }
+    .skill-panel h3 { font-size: 16px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .skill-list span { padding: 7px 10px; border-radius: 9px; background: color-mix(in srgb, var(--blue) 10%, transparent); color: var(--text); font-size: 12px; }
+    .education { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .education-card { padding: 24px; display: flex; gap: 16px; align-items: flex-start; }
+    .edu-year { color: var(--cyan); font-size: 12px; font-weight: 800; margin-top: 7px; }
+    .edu-icon { flex: 0 0 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; background: color-mix(in srgb, var(--cyan) 13%, transparent); font-size: 20px; }
+    .timeline { border-left: 1px solid var(--line); margin-left: 8px; padding-left: 25px; }
+    .timeline-item { position: relative; padding: 0 0 25px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ""; position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); left: -31px; top: 7px; box-shadow: 0 0 0 5px color-mix(in srgb, var(--cyan) 12%, transparent); }
+    .timeline-item h3 { font-size: 16px; margin-bottom: 4px; }
+    .timeline-item p { margin: 0; color: var(--muted); font-size: 14px; }
+    .footer { margin-top: 50px; padding: 32px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .backtop { color: var(--text); }
+    .reveal { animation: rise .7s both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; } }
+    @media (max-width: 820px) {
+      .navlinks { display: none; }
+      .hero { grid-template-columns: 1fr; padding-top: 55px; gap: 28px; }
+      .hero-card { max-width: 560px; }
+      .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, 1120px); }
+      .nav { min-height: 60px; }
+      .brand { font-size: 13px; }
+      .hero { padding-top: 42px; }
+      .details, .projects, .skills, .education { grid-template-columns: 1fr; }
+      .section { padding: 24px 0; }
+      .project, .panel, .skill-panel, .education-card { padding: 19px; }
+      .section-head { display: block; }
+      .section-desc { font-size: 14px; }
+    }
+    @media print {
+      :root { color-scheme: light; --bg: white; --surface: white; --text: #17243a; --muted: #4b5563; --line: #d1d5db; }
+      body { background: white; }
+      .topbar, .hero-buttons, .nav-actions { display: none !important; }
+      .hero { padding: 20px 0; }
+      .panel, .project, .skill-panel, .education-card { box-shadow: none; break-inside: avoid; }
+      .section { padding: 15px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Go to top">
+        <span class="brand-mark">AP</span>
+        <span>Professional Profile</span>
+      </a>
+      <div class="navlinks" aria-label="Page sections">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">☼</button>
+        <button class="icon-btn" type="button" onclick="window.print()" title="Print or save as PDF">↧ PDF</button>
+      </div>
+    </div>
+  </div>
 
-# PRABHAKAR AVUNURI
-### Police Constable - 1908 (IT&C)
-**In-House Development Team | TSpark, DGP Office, Hyderabad, Telangana**
+  <header class="wrap hero" id="home">
+    <div class="reveal">
+      <span class="eyebrow"><span class="pulse"></span> Individual Work Profile</span>
+      <h1><span class="gradient-text">A. Prabhakar</span></h1>
+      <p class="role">Police Constable — 1908 (IT&amp;C) · Application Developer</p>
+      <p class="intro">
+        Technology-focused professional working across web and Android applications,
+        backend APIs, enterprise search, and workflow automation. Contributing to
+        software development initiatives at TSpark, DGP Office, Hyderabad, Telangana.
+      </p>
+      <div class="hero-buttons">
+        <a class="button primary" href="#projects">Explore Projects ↗</a>
+        <a class="button" href="#skills">Technical Skills</a>
+      </div>
+    </div>
 
----
+    <aside class="hero-card reveal" aria-label="Profile summary">
+      <div class="avatar">AP</div>
+      <div class="card-label">Current assignment</div>
+      <div class="card-value">TSpark, DGP Office</div>
+      <div class="card-label">Location</div>
+      <div class="card-value">Hyderabad, Telangana</div>
+      <div class="card-label">Functional team</div>
+      <div class="card-value">In-House Development Team</div>
+      <span class="status"><span class="pulse"></span> Web · Android · APIs · Automation</span>
+    </aside>
+  </header>
 
-## 👨‍💻 Professional Profile
+  <main class="wrap">
+    <section class="section" id="about">
+      <div class="section-head">
+        <div>
+          <div class="kicker">At a glance</div>
+          <h2>Professional Overview</h2>
+          <p class="section-desc">Employee information and current professional focus.</p>
+        </div>
+      </div>
+      <div class="grid details">
+        <div class="panel"><div class="detail-icon">♙</div><div class="label">Name</div><div class="value">A. Prabhakar</div></div>
+        <div class="panel"><div class="detail-icon">⌘</div><div class="label">Rank / Designation</div><div class="value">Police Constable — 1908 (IT&amp;C)</div></div>
+        <div class="panel"><div class="detail-icon">▦</div><div class="label">Employee ID</div><div class="value">4501224</div></div>
+        <div class="panel"><div class="detail-icon">⌂</div><div class="label">Current Location</div><div class="value">TSpark, DGP Office, Hyderabad, Telangana</div></div>
+        <div class="panel"><div class="detail-icon">◇</div><div class="label">Team</div><div class="value">In-House Development Team</div></div>
+        <div class="panel"><div class="detail-icon">⌘</div><div class="label">Specialization</div><div class="value">Web &amp; Android Application Development</div></div>
+      </div>
+    </section>
 
-An IT professional specializing in Full Stack Application Development, Web and Android Application Development, Backend API Development, and Automation Solutions.
+    <section class="section" id="projects">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Selected work</div>
+          <h2>Projects &amp; Responsibilities</h2>
+          <p class="section-desc">A selection of application development, integration, and quality-review work.</p>
+        </div>
+      </div>
+      <div class="grid projects">
+        <article class="project">
+          <div class="project-top"><span class="project-no">PROJECT 01</span><span class="project-symbol">▤</span></div>
+          <h3>Auto E-Newspaper Downloader</h3>
+          <p>Developed an application to automate daily downloading and categorization of approximately 165 newspaper editions, supporting delivery to the StanzaSoft team by 6:10 AM.</p>
+          <div class="tags"><span class="tag">Automation</span><span class="tag">PDF Workflow</span><span class="tag">News Digest</span></div>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="project-no">PROJECT 02</span><span class="project-symbol">✓</span></div>
+          <h3>Aadhaar Verification System — Android</h3>
+          <p>Developed the front-end design for a verification system integrated with TG COP, including dashboards, new requests, submitted requests, live status, and request-state tracking.</p>
+          <div class="tags"><span class="tag">Android</span><span class="tag">TG COP Integration</span><span class="tag">Status Tracking</span></div>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="project-no">PROJECT 03</span><span class="project-symbol">⌕</span></div>
+          <h3>CCTNS Enterprise Search — V1 &amp; V2</h3>
+          <p>Developed backend API services for search modules covering accused, victims, witnesses, complainants, mobile numbers, vehicles, FIRs, missing persons, kidnapping-related searches, OTP-based user management, and reports.</p>
+          <div class="tags"><span class="tag">Backend APIs</span><span class="tag">Enterprise Search</span><span class="tag">CCTNS</span></div>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="project-no">PROJECT 04</span><span class="project-symbol">◎</span></div>
+          <h3>News Digest — Quality Review</h3>
+          <p>Reviewed generated newspaper PDFs, identified processing and extraction issues, checked categorization and sequencing, and compared outputs with Pro Clippings to verify accuracy and completeness. Shared feedback for correction.</p>
+          <div class="tags"><span class="tag">Quality Assurance</span><span class="tag">PDF Validation</span><span class="tag">Issue Reporting</span></div>
+        </article>
+      </div>
+    </section>
 
-Experienced in developing applications and APIs for operational requirements, newspaper automation, Aadhaar verification integration, and CCTNS enterprise search services.
+    <section class="section" id="skills">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Technical toolkit</div>
+          <h2>Skills &amp; Technologies</h2>
+        </div>
+      </div>
+      <div class="grid skills">
+        <div class="skill-panel">
+          <h3>Application Development</h3>
+          <p>Web, full-stack, and mobile application development.</p>
+          <div class="skill-list"><span>Java</span><span>JSP</span><span>Servlets</span><span>ASP.NET</span><span>C#</span><span>Android</span></div>
+        </div>
+        <div class="skill-panel">
+          <h3>Backend &amp; APIs</h3>
+          <p>Service development and application integration.</p>
+          <div class="skill-list"><span>PHP REST APIs</span><span>Backend Services</span><span>Web Integration</span><span>Android Integration</span></div>
+        </div>
+        <div class="skill-panel">
+          <h3>Databases &amp; Tools</h3>
+          <p>Database systems and development environments.</p>
+          <div class="skill-list"><span>MySQL</span><span>Microsoft SQL Server</span><span>Android Studio</span><span>Visual Studio</span><span>Eclipse</span></div>
+        </div>
+        <div class="skill-panel">
+          <h3>Additional Skills</h3>
+          <p>Workflow automation and creative production tools.</p>
+          <div class="skill-list"><span>Automation</span><span>Adobe Photoshop</span><span>Adobe Premiere Pro</span></div>
+        </div>
+      </div>
+    </section>
 
-**Current Working Location:** TSpark, DGP Office, Hyderabad, Telangana
+    <section class="section" id="education">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Academic background</div>
+          <h2>Education</h2>
+        </div>
+      </div>
+      <div class="grid education">
+        <article class="education-card">
+          <div class="edu-icon">🎓</div>
+          <div><h3>M.Tech</h3><p>Computer Science and Engineering (CSE)</p><div class="edu-year">2013</div></div>
+        </article>
+        <article class="education-card">
+          <div class="edu-icon">🎓</div>
+          <div><h3>B.Tech</h3><p>Information Technology (IT)</p><div class="edu-year">2011</div></div>
+        </article>
+      </div>
+    </section>
 
----
+    <section class="section" id="experience">
+      <div class="section-head">
+        <div>
+          <div class="kicker">Professional journey</div>
+          <h2>Experience Highlights</h2>
+          <p class="section-desc">Experience and contributions based on the supplied work profile.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>In-House Development &amp; Application Support</h3>
+            <p>Developed and supported web and Android applications for operational requirements.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>Backend API &amp; Enterprise Search</h3>
+            <p>Built backend services and search functionality for multiple CCTNS-related modules.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>Automation &amp; Quality Review</h3>
+            <p>Supported newspaper downloading, categorization, PDF validation, and quality-feedback workflows.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>Current Working Location</h3>
+            <p>TSpark, DGP Office, Hyderabad, Telangana.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-## 📋 Employee Details
+    <footer class="footer">
+      <div class="footer-inner">
+        <div><strong>A. Prabhakar</strong><br />Police Constable — 1908 (IT&amp;C)</div>
+        <div>In-House Development Team · TSpark, DGP Office</div>
+        <a class="backtop" href="#home">Back to top ↑</a>
+      </div>
+    </footer>
+  </main>
 
-| Field | Details |
-|---|---|
-| Name | A. Prabhakar |
-| Rank / Designation | Police Constable - 1908 (IT&C) |
-| Employee ID | 4501224 |
-| Team | In-House Development Team |
-| Current Location | TSpark, DGP Office, Hyderabad, Telangana |
-| Professional Role | Web and Android Application Developer |
-
----
-
-## 🚀 Projects & Responsibilities
-
-### 1. Auto E-Newspaper Downloader Application for News Digest
-
-- Developed an application for automated daily downloading and categorization of approximately 165 newspaper editions.
-- Automated the daily newspaper processing workflow.
-- Supports daily delivery of newspaper content to the StanzaSoft team by 6:10 AM.
-
-### 2. Aadhaar Verification System — Android Application
-
-- Developed the front-end design for the Aadhaar Verification System integrated with the TG COP application.
-- Implemented dashboard and verification request screens.
-- Developed interfaces for new verification requests, request submission, and live request status.
-- Supported request status tracking for Pending, In Progress, Verified, and Failed requests.
-
-### 3. CCTNS Enterprise Search — V1 & V2
-
-Developed backend API services for enterprise search modules covering:
-
-- Accused Search
-- Victim Search
-- Witness Search
-- Complainant Search
-- Mobile Number Search
-- Vehicle Search
-- FIR Search
-- FIR Contents Search
-- Missing Persons Search
-- Kidnapping-related Search
-- OTP-based User Management
-- Reports
-
-### 4. News Digest — Daily Review and Quality Feedback
-
-- Reviewed daily newspaper PDFs generated by the StanzaSoft application.
-- Identified issues in newspaper processing, article extraction, categorization, sequencing, and summaries.
-- Shared feedback and issue reports with the concerned team for correction and improvement.
-- Compared generated PDFs with corresponding Pro Clippings to verify the accuracy and completeness of processed content.
-
----
-
-## 🛠️ Technical Skills
-
-### Application Development
-- Full Stack Java Development
-- JSP and Servlets
-- ASP.NET and C#
-- Android Application Development
-
-### API Development
-- PHP-based REST API Development
-- Backend Service Development
-- Web and Android API Integration
-
-### Databases
-- MySQL
-- Microsoft SQL Server
-
-### Development Tools
-- Android Studio
-- Visual Studio
-- Eclipse
-
-### Additional Skills
-- Automation Tools Development
-- Adobe Photoshop
-- Adobe Premiere Pro
-
----
-
-## 🎓 Educational Qualifications
-
-| Qualification | Specialization | Year |
-|---|---|---|
-| M.Tech | Computer Science and Engineering (CSE) | 2013 |
-| B.Tech | Information Technology (IT) | 2011 |
-
----
-
-## 💼 Professional Experience Summary
-
-- Developed and supported web and Android applications for operational requirements.
-- Developed backend APIs and enterprise search services.
-- Automated daily newspaper downloading and categorization workflows.
-- Contributed to Aadhaar verification application integration and request tracking.
-- Performed quality reviews of newspaper PDFs and reported processing issues.
-- Currently contributing to software development activities at TSpark, DGP Office, Hyderabad, Telangana.
-
----
-
-## 📌 Current Role
-
-**In-House Development Team**  
-TSpark, DGP Office, Hyderabad, Telangana
-
-Contributing to application development, backend services, automation workflows, and technology initiatives.
-
----
-
-*Individual Work Profile — A. Prabhakar | Police Constable - 1908 (IT&C)*
+  <script>
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      const light = document.body.classList.toggle("light");
+      themeToggle.textContent = light ? "☾" : "☼";
+      document.querySelector('meta[name="theme-color"]').setAttribute(
+        "content", light ? "#f3f6fc" : "#0b1220"
+      );
+    });
+  </script>
+</body>
+</html>
