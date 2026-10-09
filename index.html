@@ -89,6 +89,14 @@
       background: linear-gradient(140deg, #69e0d0, #6ea8ff 60%, #b69cff);
       color: #07101b; font-size: 27px; font-weight: 900; letter-spacing: -.06em; margin-bottom: 22px;
     }
+
+    .avatar-wrap{position:relative;width:112px;margin-bottom:22px}
+    .avatar{width:112px;height:112px;display:grid;place-items:center;border-radius:28px;overflow:hidden;border:2px solid var(--line);background:linear-gradient(140deg,#69e0d0,#6ea8ff 60%,#b69cff);color:#07101b;font-size:30px;font-weight:900;letter-spacing:-.06em;margin:0}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .photo-controls{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .photo-controls label{display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+    .photo-note{font-size:11px;color:var(--muted);margin:8px 0 0;line-height:1.45}
+
     .card-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; }
     .card-value { font-weight: 750; margin: 3px 0 16px; overflow-wrap: anywhere; }
     .status { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); padding: 7px 10px; border-radius: 999px; font-size: 12px; color: var(--muted); }
@@ -202,7 +210,15 @@
     </div>
 
     <aside class="hero-card reveal" aria-label="Profile summary">
-      <div class="avatar">AP</div>
+      <div class="avatar-wrap">
+        <div class="avatar" id="profileAvatar" aria-label="Profile photo preview">AP</div>
+        <div class="photo-controls">
+          <label class="button" for="profilePhotoInput">📷 Upload photo</label>
+          <input id="profilePhotoInput" type="file" accept="image/*" hidden>
+          <button class="button" id="removeProfilePhoto" type="button">Remove</button>
+        </div>
+        <p class="photo-note">Preview is local to this browser. To display the photo to everyone, add the image to your GitHub repository and update the site image path.</p>
+      </div>
       <div class="card-label">Current assignment</div>
       <div class="card-value">TSpark, DGP Office</div>
       <div class="card-label">Location</div>
@@ -241,30 +257,18 @@
         </div>
       </div>
       <div class="grid projects">
-        <article class="project">
-          <div class="project-top"><span class="project-no">PROJECT 01</span><span class="project-symbol">▤</span></div>
-          <h3>Auto E-Newspaper Downloader</h3>
-          <p>Developed an application to automate daily downloading and categorization of approximately 165 newspaper editions, supporting delivery to the StanzaSoft team by 6:10 AM.</p>
-          <div class="tags"><span class="tag">Automation</span><span class="tag">PDF Workflow</span><span class="tag">News Digest</span></div>
-        </article>
-        <article class="project">
-          <div class="project-top"><span class="project-no">PROJECT 02</span><span class="project-symbol">✓</span></div>
-          <h3>Aadhaar Verification System — Android</h3>
-          <p>Developed the front-end design for a verification system integrated with TG COP, including dashboards, new requests, submitted requests, live status, and request-state tracking.</p>
-          <div class="tags"><span class="tag">Android</span><span class="tag">TG COP Integration</span><span class="tag">Status Tracking</span></div>
-        </article>
-        <article class="project">
-          <div class="project-top"><span class="project-no">PROJECT 03</span><span class="project-symbol">⌕</span></div>
-          <h3>CCTNS Enterprise Search — V1 &amp; V2</h3>
-          <p>Developed backend API services for search modules covering accused, victims, witnesses, complainants, mobile numbers, vehicles, FIRs, missing persons, kidnapping-related searches, OTP-based user management, and reports.</p>
-          <div class="tags"><span class="tag">Backend APIs</span><span class="tag">Enterprise Search</span><span class="tag">CCTNS</span></div>
-        </article>
-        <article class="project">
-          <div class="project-top"><span class="project-no">PROJECT 04</span><span class="project-symbol">◎</span></div>
-          <h3>News Digest — Quality Review</h3>
-          <p>Reviewed generated newspaper PDFs, identified processing and extraction issues, checked categorization and sequencing, and compared outputs with Pro Clippings to verify accuracy and completeness. Shared feedback for correction.</p>
-          <div class="tags"><span class="tag">Quality Assurance</span><span class="tag">PDF Validation</span><span class="tag">Issue Reporting</span></div>
-        </article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 01</span><span class="project-symbol">▤</span></div><h3>Auto E-Newspaper Downloader</h3><p>Automates daily downloading and categorization of newspaper editions, supporting delivery to the News Digest processing team.</p><div class="tags"><span class="tag">Automation</span><span class="tag">PDF Workflow</span><span class="tag">News Digest</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 02</span><span class="project-symbol">✓</span></div><h3>Aadhaar Verification System — Android</h3><p>Developed the front-end for a verification workflow integrated with TG COP, including dashboards, new and submitted requests, live status, and request-state tracking.</p><div class="tags"><span class="tag">Android</span><span class="tag">TG COP Integration</span><span class="tag">Status Tracking</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 03</span><span class="project-symbol">⌕</span></div><h3>CCTNS Enterprise Search — V1 &amp; V2</h3><p>Developed backend API services for search modules covering accused, victims, witnesses, complainants, mobile numbers, vehicles, FIRs, missing persons, kidnapping-related searches, OTP-based user management, and reports.</p><div class="tags"><span class="tag">Backend APIs</span><span class="tag">Enterprise Search</span><span class="tag">CCTNS</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 04</span><span class="project-symbol">◎</span></div><h3>News Digest — Quality Review</h3><p>Reviewed generated newspaper PDFs, identified processing and extraction issues, checked categorization and sequencing, and compared outputs with reference clippings to verify accuracy and completeness.</p><div class="tags"><span class="tag">Quality Assurance</span><span class="tag">PDF Validation</span><span class="tag">Issue Reporting</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 05</span><span class="project-symbol">♥</span></div><h3>COVID-19 Health &amp; Vaccination Tracker</h3><p>Web application designed to maintain vaccination, COVID-affected and recovery details for Intelligence Department officers and their dependents. Also records health-profile information such as blood group and comorbidities.</p><div class="tags"><span class="tag">Web Application</span><span class="tag">Health Records</span><span class="tag">Vaccination</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 06</span><span class="project-symbol">🌱</span></div><h3>PPP — Palle Pattana Pragathi</h3><p>Web application supporting the tracking of Telangana’s Palle and Pattana Pragathi initiative, including village and municipality works, locations, progress monitoring, and district grading by completion percentage.</p><div class="tags"><span class="tag">Web Application</span><span class="tag">Progress Tracking</span><span class="tag">District Dashboard</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 07</span><span class="project-symbol">▣</span></div><h3>HRMS — SIB</h3><p>Web application designed to maintain the personal and professional profiles of personnel across the Special Intelligence Branch (SIB).</p><div class="tags"><span class="tag">Web Application</span><span class="tag">HRMS</span><span class="tag">Personnel Records</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 08</span><span class="project-symbol">★</span></div><h3>Martyrs Benefits Tracking</h3><p>Web application for maintaining details of officers who lost their lives in counter-extremist operations and tracking sanctioned benefits and implementation status.</p><div class="tags"><span class="tag">Web Application</span><span class="tag">Benefits Tracking</span><span class="tag">Records</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 09</span><span class="project-symbol">⌖</span></div><h3>Location Tag</h3><p>Web application designed to help locate frequently visited areas associated with extremist activity using location inputs collected by field officers.</p><div class="tags"><span class="tag">Web Application</span><span class="tag">Location Data</span><span class="tag">Field Reporting</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 10</span><span class="project-symbol">⇄</span></div><h3>RTS — Request Tracking System</h3><p>Streamlines CDR, IPDR, and CAF requests from teams to telephone operators. Features include bulk request creation, standardized data, document downloads, user management, reports, and team dashboards.</p><div class="tags"><span class="tag">Web Application</span><span class="tag">Workflow Automation</span><span class="tag">Reporting</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 11</span><span class="project-symbol">📚</span></div><h3>GK Offline — Android Application</h3><p>Android application enabling police personnel to access reference information in rural areas without internet access. Supports offline viewing and editing, then synchronizes changes with the master database when connectivity returns.</p><div class="tags"><span class="tag">Android</span><span class="tag">Offline-First</span><span class="tag">Data Synchronization</span></div></article>
+        <article class="project"><div class="project-top"><span class="project-no">PROJECT 12</span><span class="project-symbol">⚙</span></div><h3>Dolphin — Android &amp; Web Applications</h3><p>Android and web application development, including authorized Android OS customization and integration of custom code using compatible frameworks with attention to stability and minimal disruption.</p><div class="tags"><span class="tag">Android</span><span class="tag">Web Application</span><span class="tag">OS Customization</span></div></article>
       </div>
     </section>
 
@@ -365,6 +369,41 @@
       document.querySelector('meta[name="theme-color"]').setAttribute(
         "content", light ? "#f3f6fc" : "#0b1220"
       );
+    });
+
+    // Local preview only: static GitHub Pages cannot upload files to GitHub directly.
+    const photoInput = document.getElementById("profilePhotoInput");
+    const avatar = document.getElementById("profileAvatar");
+    const removePhoto = document.getElementById("removeProfilePhoto");
+    let currentPhotoUrl = null;
+
+    photoInput.addEventListener("change", () => {
+      const file = photoInput.files && photoInput.files[0];
+      if (!file) return;
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file.");
+        photoInput.value = "";
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        alert("Please choose an image smaller than 5 MB.");
+        photoInput.value = "";
+        return;
+      }
+      if (currentPhotoUrl) URL.revokeObjectURL(currentPhotoUrl);
+      currentPhotoUrl = URL.createObjectURL(file);
+      avatar.innerHTML = "";
+      const img = document.createElement("img");
+      img.src = currentPhotoUrl;
+      img.alt = "Selected profile photo";
+      avatar.appendChild(img);
+    });
+
+    removePhoto.addEventListener("click", () => {
+      if (currentPhotoUrl) URL.revokeObjectURL(currentPhotoUrl);
+      currentPhotoUrl = null;
+      photoInput.value = "";
+      avatar.textContent = "AP";
     });
   </script>
 </body>
